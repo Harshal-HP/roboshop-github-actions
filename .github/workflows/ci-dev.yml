@@ -1,0 +1,10 @@
+name: CICD - DEV
+on:
+  push:
+    branches:
+      - 'ROBO-**'
+jobs:
+  Build:
+    runs-on: self-hosted
+    steps:
+      - run: echo OK

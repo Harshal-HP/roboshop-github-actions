@@ -1,0 +1,37 @@
+name: CICD ReUse - Main
+on: [workflow_dispatch]
+jobs:
+  Build:
+    runs-on: self-hosted
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  Test:
+    runs-on: self-hosted
+    needs: Build
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  Deploy:
+    runs-on: self-hosted
+    needs: Test
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  Dev_apply:
+    runs-on: self-hosted
+    needs: Deploy
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  QA_apply:
+    runs-on: self-hosted
+    needs: Dev_apply
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  UAT_apply:
+    runs-on: self-hosted
+    needs: QA_apply
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  Prod_apply:
+    runs-on: self-hosted
+    needs: UAT_apply
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
