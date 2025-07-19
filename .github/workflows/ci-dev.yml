@@ -1,10 +1,12 @@
-name: CICD - DEV
+name: CI - DEV
 on:
-  push:
-    branches:
-      - 'ROBO-**'
+  workflow_call:
+    inputs:
+      appType:
+        required: true
+        type: string
 jobs:
   Build:
-    runs-on: self-hosted
-    steps:
-      - run: echo OK
+    uses: Harshal-HP/roboshop-github-actions/.github/workflows/Build.yml@main
+    with:
+      appType: '${{ inputs.appType }}'

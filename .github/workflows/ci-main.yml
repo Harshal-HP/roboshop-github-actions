@@ -1,10 +1,15 @@
 name: CICD ReUse - Main
-on: [workflow_dispatch]
+on:
+  workflow_call:
+    inputs:
+      appType:
+        required: true
+        type: string
 jobs:
   Build:
-    runs-on: self-hosted
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    uses: Harshal-HP/roboshop-github-actions/.github/workflows/Build.yml@main
+    with:
+      appType: '${{ inputs.appType }}'
   Test:
     runs-on: self-hosted
     needs: Build

@@ -1,10 +1,15 @@
-name: CICD - PR
-on: [pull_request]
+name: CI - PR
+on:
+  workflow_call:
+    inputs:
+      appType:
+        required: true
+        type: string
 jobs:
   Build:
-    runs-on: self-hosted
-    steps:
-      - run: echo OK
+    uses: Harshal-HP/roboshop-github-actions/.github/workflows/Build.yml@main
+    with:
+      appType: '${{ inputs.appType }}'
   Test:
     runs-on: self-hosted
     needs: Build
