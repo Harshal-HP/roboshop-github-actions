@@ -17,21 +17,25 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   Dev_apply:
     runs-on: self-hosted
+    environment: DEV
     needs: Deploy
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   QA_apply:
     runs-on: self-hosted
+    environment: QA
     needs: Dev_apply
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   UAT_apply:
     runs-on: self-hosted
+    environment: UAT
     needs: QA_apply
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   Prod_apply:
     runs-on: self-hosted
+    environment: PROD
     needs: UAT_apply
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
