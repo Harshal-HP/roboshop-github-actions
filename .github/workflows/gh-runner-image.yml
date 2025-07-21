@@ -12,6 +12,6 @@ jobs:
       - name: docker build
         run: |
           cd docker-runner-image
-          docker build -t Harshal-HP/github-runner .
-          docker login -u Harshal-HP -p ${{ secrets.DOCKER_TOKEN }}
-          docker push Harshal-HP/github-runner
+          docker build -t harshalhp/github-runner .
+          docker login -u harshalhp -p ${{ secrets.DOCKER_TOKEN }}
+          docker push harshalhp/github-runner
