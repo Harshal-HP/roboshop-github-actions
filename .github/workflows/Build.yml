@@ -7,7 +7,12 @@ on:
         type: string
 jobs:
   nodeJS_Build:
-    if: inputs.appType == 'nodeJS'
     runs-on: self-hosted
     steps:
-      - run: echo OK - nodeJS
+      - uses: actions/checkout@v4
+      - run: npm install
+        name: download nodeJS dependencies
+        if: inputs.appType == 'nodeJS'
+      - run: mvn package
+        name: download Maven dependencies 
+        if: inputs.appType == 'maven'

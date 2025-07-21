@@ -1,0 +1,17 @@
+name: Github runner docker image 
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'docker-runner-image/**'
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker build
+        run: |
+          cd docker-runner-image
+          docker build -t Harshal-HP/github-runner .
+          docker login -u Harshal-HP -p ${{ secrets.DOCKER_TOKEN }}
+          docker push Harshal-HP/github-runner

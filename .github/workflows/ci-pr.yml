@@ -14,4 +14,12 @@ jobs:
     runs-on: self-hosted
     needs: Build
     steps:
-      - run: echo OK
+      - uses: actions/checkout@v4
+      - run: |
+          echo npm install
+          echo npm test
+        name: Run nodeJS tests
+        if: inputs.appType == 'nodeJS'
+      - run: echo mvn test
+        name: Run Maven tests
+        if: inputs.appType == 'maven'
