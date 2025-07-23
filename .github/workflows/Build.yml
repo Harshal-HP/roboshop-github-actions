@@ -6,7 +6,7 @@ on:
         required: true
         type: string
 jobs:
-  nodeJS_Build:
+  Build:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
