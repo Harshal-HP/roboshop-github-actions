@@ -16,3 +16,6 @@ jobs:
       - run: mvn package
         name: download Maven dependencies 
         if: inputs.appType == 'maven'
+      - run: go version
+        name: download go dependencies 
+        if: inputs.appType == 'go'
