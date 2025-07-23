@@ -8,6 +8,8 @@ RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/st
 RUN dnf module disable nodejs -y && dnf module enable nodejs:22 -y && dnf install nodejs npm -y 
 # Maven
 RUN dnf install maven -y
+# Go 
+RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz && export PATH=$PATH:/usr/local/go/bin
 RUN useradd github
 USER github
 WORKDIR /home/github
