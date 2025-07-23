@@ -11,18 +11,10 @@ jobs:
     with:
       appType: '${{ inputs.appType }}'
   Test:
-    runs-on: self-hosted
+    uses: Harshal-HP/roboshop-github-actions/.github/workflows/Test.yml@main
     needs: Build
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo npm install
-          echo npm test
-        name: Run nodeJS tests
-        if: inputs.appType == 'nodeJS'
-      - run: echo mvn test
-        name: Run Maven tests
-        if: inputs.appType == 'maven'
+    with:
+      appType: '${{ inputs.appType }}'
   Deploy:
     runs-on: self-hosted
     needs: Test

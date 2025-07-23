@@ -1,4 +1,4 @@
-name: CI reUse
+name: CI reUse Build
 on:
   workflow_call:
     inputs:
