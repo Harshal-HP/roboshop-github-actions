@@ -11,7 +11,6 @@ RUN dnf install maven -y
 # Go 
 RUN curl -o go1.24.5.linux-amd64.tar.gz -L https://go.dev/dl/go1.24.5.linux-amd64.tar.gz &&  rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz && rm go1.24.5.linux-amd64.tar.gz
 ENV PATH="/usr/local/go/bin:${PATH}"
-RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz && export PATH=$PATH:/usr/local/go/bin
 RUN useradd github
 USER github
 WORKDIR /home/github
