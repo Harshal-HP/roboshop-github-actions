@@ -5,11 +5,15 @@ on:
       appType:
         required: true
         type: string
+      appName: 
+        required: true
+        type: string
 jobs:
   Build:
     uses: Harshal-HP/roboshop-github-actions/.github/workflows/Build.yml@main
     with:
       appType: '${{ inputs.appType }}'
+      appName: '${{ inputs.appName }}'
   Test:
     uses: Harshal-HP/roboshop-github-actions/.github/workflows/Test.yml@main
     needs: Build
