@@ -11,11 +11,12 @@ on:
       docker_build:
         required: true
         type: string
+    secrets:
+      vault_token:
+        required: true
 jobs:
   Build:
     runs-on: self-hosted
-    env: 
-      vault_token: ${{ secrets.VAULT_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: download nodeJS dependencies
