@@ -31,8 +31,8 @@ jobs:
         if: inputs.appType == 'go'  
         run: |
           go version
-          go get github.com/opentracing/opentracing-go
-          go get github.com/streadway/amqp
+          go mod init shipping
+          go mod tidy
           go build -o dispatch main.go      
       - name: Import Secrets Azure 
         if: inputs.docker_build == 'true' && env.vault_token != ''
