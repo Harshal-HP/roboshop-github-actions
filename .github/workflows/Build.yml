@@ -29,7 +29,9 @@ jobs:
         run: mvn package
       - name: download go dependencies 
         if: inputs.appType == 'go'  
-        run: go version      
+        run: |
+          go version
+          go build -o dispatch main.go      
       - name: Import Secrets Azure 
         if: inputs.docker_build == 'true' && env.vault_token != ''
         uses: hashicorp/vault-action@v2.4.0
