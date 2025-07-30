@@ -31,7 +31,7 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   Dev_Deploy:
-    uses: Harshal-HP/roboshop-helm/.github/workflows/helm-apply.yml@main
+    uses: Harshal-HP/roboshop-helm/.github/workflows/helm-apply-DEV.yml@main
     needs: Test
     with:
       appType: '${{ inputs.appType }}'
