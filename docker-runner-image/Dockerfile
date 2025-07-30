@@ -16,7 +16,7 @@ RUN dnf install maven -y
 RUN curl -o go1.24.5.linux-amd64.tar.gz -L https://go.dev/dl/go1.24.5.linux-amd64.tar.gz &&  rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz && rm go1.24.5.linux-amd64.tar.gz
 ENV PATH="/usr/local/go/bin:${PATH}"
 # Helm
-RUN curl -o helm-v3.0.0-linux-amd64.tar.gz -L https://get.helm.sh/helm-v3.0.0-linux-amd64.tar.gz && tar -xzf helm-v3.0.0-linux-amd64.tar.gz && mv linux-amd64/helm /usr/local/bin/helm && rm -rf helm-v3.0.0-linux-amd64.tar.gz linux-amd64
+RUN curl -o helm-v3.17.4-linux-amd64.tar.gz -L https://get.helm.sh/helm-v3.17.4-linux-amd64.tar.gz && tar -xzf helm-v3.17.4-linux-amd64.tar.gz && mv linux-amd64/helm /usr/local/bin/helm && rm -rf helm-v3.17.4-linux-amd64.tar.gz linux-amd64
 #
 RUN useradd github
 USER github
