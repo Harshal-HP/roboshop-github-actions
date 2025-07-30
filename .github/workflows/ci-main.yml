@@ -31,7 +31,7 @@ jobs:
     with:
       appType: '${{ inputs.appType }}'
       appName: '${{ inputs.appName }}'
-      ResourceGroup: 'roboshop-ukwest-dev '
+      ResourceGroup: 'roboshop-ukwest-dev'
       Env: 'dev'
     # secrets:
     #   vault_token: ${{ secrets.vault_token }}
