@@ -36,6 +36,8 @@ jobs:
     with:
       appType: '${{ inputs.appType }}'
       appName: '${{ inputs.appName }}'
+    secrets:
+      vault_token: ${{ secrets.vault_token }}
   QA_apply:
     runs-on: self-hosted
     environment: QA
