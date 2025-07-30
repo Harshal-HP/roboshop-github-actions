@@ -30,16 +30,16 @@ jobs:
     needs: Test
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-  Dev_apply:
-    runs-on: self-hosted
-    environment: DEV
-    needs: Deploy
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  Dev_Deploy:
+    uses: Harshal-HP/roboshop-helm/.github/workflows/helm-apply.yml@main
+    needs: Test
+    with:
+      appType: '${{ inputs.appType }}'
+      appName: '${{ inputs.appName }}'
   QA_apply:
     runs-on: self-hosted
     environment: QA
-    needs: Dev_apply
+    needs: Dev_Deploy
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   UAT_apply:
