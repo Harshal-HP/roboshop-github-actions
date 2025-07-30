@@ -33,8 +33,8 @@ jobs:
       appName: '${{ inputs.appName }}'
       ResourceGroup: 'roboshop-ukwest-dev '
       Env: 'dev'
-    secrets:
-      vault_token: ${{ secrets.vault_token }}
+    # secrets:
+    #   vault_token: ${{ secrets.vault_token }}
   Prod_Deploy:
     runs-on: self-hosted
     environment: PROD
