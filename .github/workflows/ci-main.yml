@@ -25,34 +25,17 @@ jobs:
     needs: Build
     with:
       appType: '${{ inputs.appType }}'
-  Deploy:
-    runs-on: self-hosted
-    needs: Test
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   Dev_Deploy:
-    uses: Harshal-HP/roboshop-helm/.github/workflows/helm-apply-DEV.yml@main
+    uses: Harshal-HP/roboshop-helm/.github/workflows/helm-apply.yml@main
     needs: Test
     with:
       appType: '${{ inputs.appType }}'
       appName: '${{ inputs.appName }}'
-    secrets:
-      vault_token: ${{ secrets.vault_token }}
-  QA_apply:
-    runs-on: self-hosted
-    environment: QA
-    needs: Dev_Deploy
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-  UAT_apply:
-    runs-on: self-hosted
-    environment: UAT
-    needs: QA_apply
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-  Prod_apply:
+      ResourceGroup: 'roboshop-ukwest-dev '
+      Env: 'dev'
+  Prod_Deploy:
     runs-on: self-hosted
     environment: PROD
-    needs: UAT_apply
+    needs: Dev_Deploy
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
