@@ -17,6 +17,8 @@ RUN curl -o go1.24.5.linux-amd64.tar.gz -L https://go.dev/dl/go1.24.5.linux-amd6
 ENV PATH="/usr/local/go/bin:${PATH}"
 # Helm
 RUN curl -o helm-v3.17.4-linux-amd64.tar.gz -L https://get.helm.sh/helm-v3.17.4-linux-amd64.tar.gz && tar -xzf helm-v3.17.4-linux-amd64.tar.gz && mv linux-amd64/helm /usr/local/bin/helm && rm -rf helm-v3.17.4-linux-amd64.tar.gz linux-amd64
+# argocd
+RUN curl -sSL -o /bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && chmod +x /bin/argocd
 #
 RUN useradd github
 USER github
